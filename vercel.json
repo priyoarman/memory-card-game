@@ -1,0 +1,5 @@
+{
+  "buildCommand": "echo 'Static site with serverless functions'",
+  "installCommand": "npm install",
+  "outputDirectory": "./"
+}
