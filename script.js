@@ -20,11 +20,9 @@ async function initGame() {
   gameBoard.innerHTML = "";
 
   try {
-    // Week 2: Fetch cards from the Backend API
-    const response = await fetch("http://localhost:3000/api/cards");
+    const response = await fetch("/api/cards");
     const icons = await response.json();
 
-    // Create pairs and shuffle
     const deck = [...icons, ...icons];
     deck.sort(() => 0.5 - Math.random());
 
@@ -56,8 +54,11 @@ async function initGame() {
     });
   } catch (error) {
     console.error("Failed to fetch cards:", error);
+    gameBoard.style.display = 'flex';
+    gameBoard.style.alignItems = 'center';
+    gameBoard.style.justifyContent = 'center';
     gameBoard.innerHTML =
-      "<p style='color:red'>Error loading game data. Is the server running?</p>";
+      "<p style='color:red; font-size:18px;'>Error loading game data. Is the server running?</p>";
   }
 }
 
